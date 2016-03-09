@@ -20,7 +20,7 @@ namespace ArtificialInteligenceFirst
         {
             nodeList.Add(new GraphNode(node));
         }
-        public void addVertex(GraphNode from, GraphNode to)
+        public void addEdge(GraphNode from, GraphNode to)
         {
             from.neighbours.Add(to);
             to.backElement = from;
