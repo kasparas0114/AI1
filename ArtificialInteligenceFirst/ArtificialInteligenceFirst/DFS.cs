@@ -19,8 +19,16 @@ namespace ArtificialInteligenceFirst
 
         public void Calculate()
         {
-
+            GraphNode tempMatrix;
+            while (tempMatrix != correctMatrix)
+            {
+                foreach (GraphNode gN in tempMatrix.neighbours)
+                {
+                    
+                }
+            } 
         }
+
         public void MoveUp(GraphNode node, int row, int line)
         {
             int[,] matrix = node.GetNodeMatrix();
@@ -29,7 +37,33 @@ namespace ArtificialInteligenceFirst
             GraphNode newItem = new GraphNode(matrix);
             newGraph.addNode(newItem);
             newGraph.addVertex(node, newItem);
-
+        }
+        public void MoveDown(GraphNode node, int row, int line)
+        {
+            int[,] matrix = node.GetNodeMatrix();
+            matrix[row, line] = matrix[row + 1, line];
+            matrix[row + 1, line] = 0;
+            GraphNode newItem = new GraphNode(matrix);
+            newGraph.addNode(newItem);
+            newGraph.addVertex(node, newItem);
+        }
+        public void MoveLeft(GraphNode node, int row, int line)
+        {
+            int[,] matrix = node.GetNodeMatrix();
+            matrix[row, line] = matrix[row, line-1];
+            matrix[row, line-1] = 0;
+            GraphNode newItem = new GraphNode(matrix);
+            newGraph.addNode(newItem);
+            newGraph.addVertex(node, newItem);
+        }
+        public void MoveRight(GraphNode node, int row, int line)
+        {
+            int[,] matrix = node.GetNodeMatrix();
+            matrix[row, line] = matrix[row, line + 1];
+            matrix[row, line + 1] = 0;
+            GraphNode newItem = new GraphNode(matrix);
+            newGraph.addNode(newItem);
+            newGraph.addVertex(node, newItem);
         }
     }
 }
