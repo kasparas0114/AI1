@@ -8,5 +8,16 @@ namespace ArtificialInteligenceFirst
 {
     class GraphNode
     {
+        public int[,] NumbersArray;
+        public List<GraphNode> neighbours;
+        public GraphNode(int[,] numbersArray)
+        {
+            this.NumbersArray = numbersArray;
+        }
+
+        public int[,] GetNodeMatrix()
+        {
+            return NumbersArray;
+        }
     }
 }
