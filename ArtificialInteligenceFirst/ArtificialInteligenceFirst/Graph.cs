@@ -10,7 +10,7 @@ namespace ArtificialInteligenceFirst
     {
         GraphNode nodea;
         public GraphNode ElementA;
-        private List<GraphNode> nodeList;
+        private List<GraphNode> nodeList = new List<GraphNode>();
 
         public void addNode(GraphNode node)
         {

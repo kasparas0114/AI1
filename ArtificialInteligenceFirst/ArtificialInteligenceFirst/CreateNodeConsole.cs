@@ -8,6 +8,7 @@ namespace ArtificialInteligenceFirst
 {
     class CreateNodeConsole
     {
+
         public GraphNode GetNode()
         {
             int[,] matrix = new int[3, 3];

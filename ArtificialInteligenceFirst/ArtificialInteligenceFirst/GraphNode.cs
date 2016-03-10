@@ -9,7 +9,7 @@ namespace ArtificialInteligenceFirst
     class GraphNode
     {
         public int[,] NumbersArray;
-        public List<GraphNode> neighbours;
+        public List<GraphNode> neighbours = new List<GraphNode>();
         public GraphNode backElement;
         public GraphNode(int[,] numbersArray)
         {
