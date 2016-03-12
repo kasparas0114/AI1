@@ -32,6 +32,8 @@ namespace ArtificialInteligenceFirst
                     if (compareArrays(correctMatrix, item.NumbersArray))
                     {
                         Console.WriteLine("Found");
+                        Console.WriteLine("aa");
+
                         k = false;
                         PrintPath(item);
                     }
