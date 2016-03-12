@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArtificialInteligenceFirst
+namespace AI1
 {
-    class BFS
+    class Program
     {
-
-
+        static void Main(string[] args)
+        {
+        }
     }
 }
