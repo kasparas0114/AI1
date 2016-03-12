@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace ArtificialInteligenceFirst
 {
-    class Program
+    class BFS
     {
-        static void Main(string[] args)
-        {
-        }
+
+
     }
 }
