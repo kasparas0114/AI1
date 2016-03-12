@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ArtificialInteligenceFirst
 {
-    abstract  class SearchAlgorithms
+    abstract class SearchAlgorithms
     {
-      
+
         public List<GraphNode> nodesList = new List<GraphNode>();
         public int[,] startMatrix = new int[3, 3];
         public int[,] correctMatrix = new int[3, 3] { {1, 2, 3 }, { 8, 0, 4 },
@@ -37,7 +37,7 @@ namespace ArtificialInteligenceFirst
             }
             Console.WriteLine();
         }
-        
+
         public bool compareArrays(int[,] arrayA, int[,] arrayB)
         {
             for (int i = 0; i < 3; i++)

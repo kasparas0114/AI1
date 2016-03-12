@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ArtificialInteligenceFirst
 {
-    class DFS:SearchAlgorithms
+    class DFS : SearchAlgorithms
     {
         public DFS()
         {
@@ -43,7 +43,7 @@ namespace ArtificialInteligenceFirst
         }
         public void Move(GraphNode node)
         {
-           
+
         }
     }
 }
