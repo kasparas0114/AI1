@@ -11,7 +11,7 @@ namespace ArtificialInteligenceFirst
         static void Main(string[] args)
         {
             Console.WriteLine(" Yooo");
-            BFS d = new BFS();
+            DFS d = new DFS();
         }
     }
 }

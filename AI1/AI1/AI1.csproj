@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1F3304A3-372B-44B3-A400-0E30E0CD7C7F}</ProjectGuid>
+    <ProjectGuid>{E3CE899F-BEC1-49A0-8F2F-B6A496C080C0}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ArtificialInteligenceFirst</RootNamespace>
-    <AssemblyName>ArtificialInteligenceFirst</AssemblyName>
+    <RootNamespace>AI1</RootNamespace>
+    <AssemblyName>AI1</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,13 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateNodeConsole.cs" />
-    <Compile Include="DFS.cs" />
-    <Compile Include="GraphNode.cs" />
-    <Compile Include="Graph.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchAlgorithms.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
