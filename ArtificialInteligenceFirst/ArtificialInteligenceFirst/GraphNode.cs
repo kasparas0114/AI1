@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AI1
+namespace ArtificialInteligenceFirst
 {
-    class Program
+    class GraphNode
     {
         public int[,] NumbersArray;
         public List<GraphNode> neighbours = new List<GraphNode>();
@@ -18,6 +18,7 @@ namespace AI1
 
         public int[,] GetNodeMatrix()
         {
+            return NumbersArray;
         }
     }
 }
