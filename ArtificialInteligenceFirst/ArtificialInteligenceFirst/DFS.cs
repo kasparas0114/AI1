@@ -32,8 +32,6 @@ namespace ArtificialInteligenceFirst
                     if (compareArrays(correctMatrix, item.NumbersArray))
                     {
                         Console.WriteLine("Found");
-                        Console.WriteLine("aa");
-
                         k = false;
                         PrintPath(item);
                     }
@@ -43,7 +41,19 @@ namespace ArtificialInteligenceFirst
         }
         public void Move(GraphNode node)
         {
-           
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (node.NumbersArray[i, j] == 0)
+                    {
+                        if (i < 2) MoveRight(node, i, j);
+                        if (i > 0) MoveLeft(node, i, j);
+                        if (j < 2) MoveDown(node, i, j);
+                        if (j > 0) MoveUp(node, i, j);
+                    }
+                }
+            }
         }
     }
 }
