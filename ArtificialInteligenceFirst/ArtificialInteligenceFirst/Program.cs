@@ -11,7 +11,7 @@ namespace ArtificialInteligenceFirst
         static void Main(string[] args)
         {
             Console.WriteLine(" Yooo");
-            IDFS d = new IDFS();
+            Astar d = new Astar();
         }
     }
 }
