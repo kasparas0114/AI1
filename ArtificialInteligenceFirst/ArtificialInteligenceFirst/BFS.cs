@@ -9,7 +9,7 @@ namespace ArtificialInteligenceFirst
     class BFS : SearchAlgorithms
     {
 
-
+        public HashSet<int[,]> visitedList = new HashSet<int[,]>();
         public Queue<GraphNode> queue = new Queue<GraphNode>(); public BFS()
         {
             Calculate();
@@ -28,14 +28,22 @@ namespace ArtificialInteligenceFirst
                 if (compareArrays(correctMatrix, item.NumbersArray))
                 {
                     Console.WriteLine("Found");
-                    k = false;
                     PrintPath(item);
+                    Console.ReadLine();
 
                 }
                 counter++;
                 Move(item);
                 // printNode(item);
                 //Console.WriteLine(counter);
+            }
+            foreach(var i in visitedList)
+            {
+                if (compareArrays(correctMatrix,i))
+                {
+                    Console.WriteLine("bugas");
+
+                }
             }
             Console.WriteLine("No solution");
             Console.ReadLine();
@@ -44,10 +52,7 @@ namespace ArtificialInteligenceFirst
         public override bool addNewNodeToGraph(int[,] tempMatrix, GraphNode node)
         {
 
-
-            // if (!(node.NumbersArray.Equals(tempMatrix))&&(visitedList.FirstOrDefault(x=>x.Equals(tempMatrix))==null))
-            //&&)
-            if (!(visitedList.Any(x => compareArrays(x, tempMatrix))))
+            if ( !(compareArrays(tempMatrix, node.NumbersArray)) && !(visitedList.Any(x => compareArrays(x, tempMatrix))))
             {
                 GraphNode newItem = new GraphNode(tempMatrix,node);
                 visitedList.Add(tempMatrix);
@@ -59,7 +64,7 @@ namespace ArtificialInteligenceFirst
         private int calculateDepth(GraphNode node)
         {
             
-                int counter = 1;
+                int counter = 0;
                 while (node != null)
                 {
                     node = node.backElement;
@@ -74,7 +79,7 @@ namespace ArtificialInteligenceFirst
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    if ((node.NumbersArray[i, j] == 0)&&((calculateDepth(node)<26)))
+                    if ((node.NumbersArray[i, j] == 0)&&((calculateDepth(node)<24)))
                     {
                         if (i < 2) MoveRight(node, i, j);
                         if (i > 0) MoveLeft(node, i, j);

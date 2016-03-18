@@ -9,7 +9,7 @@ namespace ArtificialInteligenceFirst
     abstract class SearchAlgorithms
     {
 
-        public List<int[,]> visitedList = new List<int[,]>();
+        
         public int[,] startMatrix = new int[3, 3];
         public int[,] correctMatrix = new int[3, 3] { {1, 2, 3 }, { 8, 0, 4 },
                                         {7,6, 5} };
@@ -96,19 +96,6 @@ namespace ArtificialInteligenceFirst
         public abstract bool addNewNodeToGraph(int[,] tempMatrix, GraphNode node);
         
 
-        public bool checkPath(GraphNode node, int[,] matrix)
-        {
-            while(node != null)
-            {
-                if (compareArrays(node.NumbersArray,matrix))
-                {
-
-                    visitedList.Add(matrix);
-                    return false;
-                }
-                node = node.backElement;
-            }
-            return true;
-        }
+       
     }
 }
