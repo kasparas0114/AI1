@@ -22,7 +22,7 @@ namespace ArtificialInteligenceFirst
                 }
             }
 
-            return new GraphNode(matrix);
+            return new GraphNode(matrix,null);
         }
     }
 }

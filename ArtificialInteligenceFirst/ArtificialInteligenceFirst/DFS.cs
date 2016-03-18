@@ -8,52 +8,69 @@ namespace ArtificialInteligenceFirst
 {
     class DFS:SearchAlgorithms
     {
+
+        public Stack<GraphNode> nodeStack = new Stack<GraphNode>();
         public DFS()
         {
-            newGraph = new Graph();
             Calculate();
         }
 
         public void Calculate()
         {
             bool k = true;
-            int[,] startMatrix = ((new CreateNodeConsole()).GetNode()).NumbersArray;
-            nodesList.Add(new GraphNode(startMatrix));
-
-            while (k)
-            {
-                List<GraphNode> tempList = nodesList.ToList();
-                foreach (GraphNode item in tempList)
+            var startNode = (new CreateNodeConsole()).GetNode();
+            visitedList.Add(startMatrix);
+            nodeStack.Push(startNode);
+            int counter = 0;
+          
+            while (nodeStack.Count>0)
+            {    
+                var item = nodeStack.Pop();
+                if (compareArrays(correctMatrix,item.NumbersArray))
                 {
-                    Move(item);
-                }
-                foreach (GraphNode item in nodesList)
-                {
-                    if (compareArrays(correctMatrix, item.NumbersArray))
-                    {
-                        Console.WriteLine("Found");
-                        k = false;
-                        PrintPath(item);
-                    }
-                }
+                    Console.WriteLine("Found");
+                    PrintPath(item);
+                    
+                }           
+                Move(item);
+                counter = nodeStack.Count;
+                Console.WriteLine(counter); 
             }
+            Console.WriteLine("No solution");
             Console.ReadLine();
         }
-        public void Move(GraphNode node)
+       
+        public bool Move(GraphNode node)
         {
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    if (node.NumbersArray[i, j] == 0)
+                    if ((node.NumbersArray[i, j] == 0) && (nodeStack.Count < 25))
                     {
-                        if (i < 2) MoveRight(node, i, j);
-                        if (i > 0) MoveLeft(node, i, j);
-                        if (j < 2) MoveDown(node, i, j);
-                        if (j > 0) MoveUp(node, i, j);
+                        if (i < 2) { if(MoveRight(node, i, j)) return true; };
+                        if (i > 0) { if(MoveLeft(node, i, j)) return true; };
+                        if (j < 2) { if(MoveDown(node, i, j)) return true; };
+                        if (j > 0) { if(MoveUp(node, i, j)) return true; };
+                        return false;
                     }
                 }
             }
+            return false;
+        }
+
+        public override bool addNewNodeToGraph(int[,] tempMatrix, GraphNode node)
+        {
+            
+            if (!(visitedList.Any(x => compareArrays(x, tempMatrix))))
+            {
+                nodeStack.Push(node);
+                GraphNode newItem = new GraphNode(tempMatrix,node);
+                visitedList.Add(tempMatrix);
+                nodeStack.Push(newItem);
+                return true;
+            }
+            return false;
         }
     }
 }

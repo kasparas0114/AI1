@@ -9,11 +9,11 @@ namespace ArtificialInteligenceFirst
     abstract class SearchAlgorithms
     {
 
-        public List<GraphNode> nodesList = new List<GraphNode>();
+        public List<int[,]> visitedList = new List<int[,]>();
         public int[,] startMatrix = new int[3, 3];
         public int[,] correctMatrix = new int[3, 3] { {1, 2, 3 }, { 8, 0, 4 },
                                         {7,6, 5} };
-        public Graph newGraph;
+     
         public void PrintPath(GraphNode node)
         {
             int counter = 0;
@@ -52,64 +52,63 @@ namespace ArtificialInteligenceFirst
             }
             return true;
         }
-        public void MoveUp(GraphNode node, int row, int line)
+        public bool MoveUp(GraphNode node, int row, int line)
         {
             int[,] matrix = node.GetNodeMatrix();
             int[,] tempMatrix = (int[,])matrix.Clone();
             tempMatrix[row, line] = tempMatrix[row, line - 1];
             tempMatrix[row, line - 1] = 0;
-            GraphNode newItem = new GraphNode(tempMatrix);
-            if (nodesList.FirstOrDefault(x => compareArrays(x.NumbersArray, tempMatrix)) == null)
-            {
-                newGraph.addNode(newItem);
-                newGraph.addEdge(node, newItem);
-                nodesList.Add(newItem);
-            }
-
+            if (addNewNodeToGraph(tempMatrix, node)) return true;
+            return false;
 
         }
-        public void MoveDown(GraphNode node, int row, int line)
+
+        public bool MoveDown(GraphNode node, int row, int line)
         {
             int[,] matrix = node.GetNodeMatrix();
             int[,] tempMatrix = (int[,])matrix.Clone();
             tempMatrix[row, line] = tempMatrix[row, line + 1];
             tempMatrix[row, line + 1] = 0;
-            GraphNode newItem = new GraphNode(tempMatrix);
-            if (nodesList.FirstOrDefault(x => compareArrays(x.NumbersArray, tempMatrix)) == null)
-            {
-                newGraph.addNode(newItem);
-                newGraph.addEdge(node, newItem);
-                nodesList.Add(newItem);
-            }
+            if (addNewNodeToGraph(tempMatrix, node)) return true;
+            return false;
 
         }
-        public void MoveLeft(GraphNode node, int row, int line)
+        public bool MoveLeft(GraphNode node, int row, int line)
         {
             int[,] matrix = node.GetNodeMatrix();
             int[,] tempMatrix = (int[,])matrix.Clone();
             tempMatrix[row, line] = tempMatrix[row - 1, line];
             tempMatrix[row - 1, line] = 0;
-            GraphNode newItem = new GraphNode(tempMatrix);
-            if (nodesList.FirstOrDefault(x => compareArrays(x.NumbersArray, tempMatrix)) == null)
-            {
-                newGraph.addNode(newItem);
-                newGraph.addEdge(node, newItem);
-                nodesList.Add(newItem);
-            }
+            if (addNewNodeToGraph(tempMatrix, node)) return true;
+            return false;
         }
-        public void MoveRight(GraphNode node, int row, int line)
+
+        public bool MoveRight(GraphNode node, int row, int line)
         {
             int[,] matrix = node.GetNodeMatrix();
             int[,] tempMatrix = (int[,])matrix.Clone();
             tempMatrix[row, line] = tempMatrix[row + 1, line];
             tempMatrix[row + 1, line] = 0;
-            GraphNode newItem = new GraphNode(tempMatrix);
-            if (nodesList.FirstOrDefault(x => compareArrays(x.NumbersArray, tempMatrix)) == null)
+            if (addNewNodeToGraph(tempMatrix, node)) return true;
+            return false;
+        }
+
+        public abstract bool addNewNodeToGraph(int[,] tempMatrix, GraphNode node);
+        
+
+        public bool checkPath(GraphNode node, int[,] matrix)
+        {
+            while(node != null)
             {
-                newGraph.addNode(newItem);
-                newGraph.addEdge(node, newItem);
-                nodesList.Add(newItem);
+                if (compareArrays(node.NumbersArray,matrix))
+                {
+
+                    visitedList.Add(matrix);
+                    return false;
+                }
+                node = node.backElement;
             }
+            return true;
         }
     }
 }

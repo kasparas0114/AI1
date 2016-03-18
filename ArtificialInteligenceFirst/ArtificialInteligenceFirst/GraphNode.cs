@@ -10,15 +10,21 @@ namespace ArtificialInteligenceFirst
     {
         public int[,] NumbersArray;
         public List<GraphNode> neighbours = new List<GraphNode>();
-        public GraphNode backElement;
-        public GraphNode(int[,] numbersArray)
+        public GraphNode backElement ;
+        
+        public GraphNode(int[,] numbersArray, GraphNode node)
         {
             this.NumbersArray = numbersArray;
+            this.backElement = node;
+            
         }
 
         public int[,] GetNodeMatrix()
         {
             return NumbersArray;
         }
+        
+
+        
     }
 }

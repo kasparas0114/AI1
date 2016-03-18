@@ -18,11 +18,10 @@ namespace ArtificialInteligenceFirst
         }
         public void addNode(int[,] node)
         {
-            nodeList.Add(new GraphNode(node));
         }
         public void addEdge(GraphNode from, GraphNode to)
         {
-            from.neighbours.Add(to);
+            //from.neighbours.Add(to);
             to.backElement = from;
         }
     }
